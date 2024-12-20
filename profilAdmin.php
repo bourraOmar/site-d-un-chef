@@ -2,146 +2,107 @@
 
 
 <!DOCTYPE html>
-  <html lang="en">
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-      rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
-      rel="stylesheet">
-
-    <title>Restaurant Baldi</title>
-
-    <!-- Tailwind CSS -->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              'poppins': ['Poppins', 'sans-serif'],
-              'dancing': ['Dancing Script', 'cursive']
-            }
-          }
-        }
-      }
-    </script>
-  </head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-inter text-gray-800">
 
-  <body class="font-poppins">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 px-5 z-50 bg-white shadow-md">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between py-4">
-          <a href="index.html" class="logo">
-            <img src="img/klassy-logo.png" alt="Klassy Cafe Logo" class="h-12">
-          </a>
-          <nav>
-            <ul class="flex space-x-6">
-              <li class="cursor-pointer hover:text-amber-600 transition"><a href="index.php">Home</a></li>
-              <li class="cursor-pointer hover:text-amber-600 transition"><a href="menu.php">Menu</a></li>
-              <li class="cursor-pointer hover:text-amber-600 transition"><a href="contact.php">Contact Us</a></li>
-              <li class="cursor-pointer" href="signIn.php"><a href="signIn.php"><svg xmlns="http://www.w3.org/2000/svg"
-                    height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
-                    <path
-                      d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
-                  </svg></a></li>
-            </ul>
-          </nav>
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="Gestion-d-un-un-Chef-Cuisinier/index.php"><img width="80px" src="../img/logo.png" alt="LOGO"></a>
+            <div class="space-x-8 flex">
+                <a href='dashbord.php' class="text-gray-700 hover:text-gray-900 transition mt-1">dashboard</a>
+                <!-- sign up - log in  -->
+                <div class="relative left-7 hidden">
+                <a href="Autentification pages/login.php" class="bg-gray-900 text-white pr-12 px-4 py-2 rounded-full hover:bg-gray-700 transition">Sign up</a>
+                <a href="Autentification pages/login.php" class="bg-gray-400 text-white px-4 py-2 rounded-full hover:bg-gray-500 transition relative right-12">Log in</a>
+                </div>
+                <!-- after enter  -->
+                <div class="">
+                <a href=""><img width="30px" class="rounded-full" src="../img/onsiteheadshot.jpg" alt=""></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
+    </nav>
 
-    <!-- Main Banner -->
-    <div class="pt-24 bg-[url('img/bg.jpg')] bg-no-repeat bg-cover px-[15%]  h-[100%]">
-      <div class="container mx-auto p-4 py-20">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <div class="text-center md:text-left">
-            <h4 class="text-2xl font-bold text-amber-600">KlassyCafe</h4>
-            <h6 class="text-xl mb-4">THE BEST EXPERIENCE</h6>
-            <h4 class="text-9xl font-bold text-amber-600">Menu</h4>
-          </div>
+    <div class="container mx-auto px-4 py-24">
+
+        <div class="container mx-auto max-w-4xl px-4 py-8">
+        
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            
+            <div class="bg-gray-100 p-4 flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">My Profile</h2>
+                <div class="space-x-3 flex">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                        Edit Profile
+                    </button>
+                    
+                    <form action="logOut.php" method="POST">
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+                                Disconnect
+                            </button>
+                    </form>
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="h-48 bg-cover bg-center" style="background-image: url('img/slide-02.jpg')">
+                
+            </div>
+
+           
+            <div class="px-6 py-4 relative">
+                
+                <img width="150px" src="img/chefs-03.jpg" alt="Chef Profil" class="absolute bottom-36  left-1/2 transform -translate-x-1/2 rounded-full border-4 border-white shadow-lg">
+                
+
+                <div class="text-center pt-24">
+                <?php if(isset($_SESSION['name'], $_SESSION['prenom'])) { ?>
+                    <h1 class="text-3xl font-bold text-gray-800">
+                        <?php echo"Chef ". $_SESSION['name'] . " " . $_SESSION['prenom'] ."" ?>
+                    </h1>
+                <?php } ?>
+                    <p class="text-gray-600 mt-2">Star Chef | Gourmet Cuisine</p>
+                    <div class="mt-2 text-gray-500">
+                        <span>Paris, France</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        
+        <div class="grid md:grid-cols-3 gap-6 mt-6">
+            
+            <div class="bg-white shadow-lg rounded-lg p-6 md:col-span-2 relative">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">About Me</h2>
+                <p class="text-gray-600">
+                Chef Mouha is a culinary artist with a passion for creating innovative, mouth-watering dishes that highlight the freshest, locally-sourced ingredients. With over 20 years of experience in renowned kitchens around the world, Chef Mouha has honed their craft in a diverse array of cuisines, blending traditional techniques with modern flair.
+                </p>
+            </div>
+
+            
+            <div class="bg-white shadow-lg rounded-lg p-6 relative">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Expertise</h2>
+                <p> <span class="font-bold">Cooking Techniques:</span> Expertise in various cooking techniques such as grilling, roasting, sautéing, braising, poaching, and baking. <br>
+                    <span class="font-bold">Knife Skills:</span> Proficiency in chopping, dicing, julienning, and filleting. <br>
+                    <span class="font-bold">Sauce Making:</span> Knowledge of creating sauces (béchamel, hollandaise, demi-glace, etc.) and their variations. <br>
+                    <span class="font-bold">Plating and Presentation:</span> Artistic presentation of dishes to enhance their visual appeal. <br></p> 
+            </div>
+        </div>
     </div>
 
-    <!-- Menu Section -->
-    <section id="reservation" class="py-16 bg-gray-100">
-      <div class="grid grid-cols-3 gap-8 items-center mx-auto px-24">
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-          <a href="#">
-            <img class="rounded-lg w-full" src="img/menu-item-01.jpg" alt="" />
-          </a>
-          <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">tajin l7am bil bar9o9 </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-600 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 ">
-              Reserver
-              <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-          <a href="#">
-            <img class="rounded-lg w-full" src="img/menu-item-03.jpg" alt="" />
-          </a>
-          <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">bayd w maticha</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Reserver
-              <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-          <a href="#">
-            <img class="rounded-lg w-full" src="img/menu-item-02.jpg" alt="" />
-          </a>
-          <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">bayd w maticha</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Reserver
-              <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-      <div class="mx-auto px-4">
-        <div class="grid md:grid-cols-2">
-          <div class="flex justify-center">
-            <a href="index.html">
-              <img src="img/white-logo.png" alt="Klassy Cafe Logo" class="h-12">
-            </a>
-          </div>
-          <div class="text-center md:text-right">
-            <p>© Copyright Klassy Cafe Co.</p>
-            <p>Design: TemplateMo</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
-
-  </html>
+?>
+</body>
+</html>
