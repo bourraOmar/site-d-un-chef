@@ -117,6 +117,7 @@
       </div>
     </div>
   </footer>
+  <script src="login-validation.js"></script>
 </body>
 
 </html>

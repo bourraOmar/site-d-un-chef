@@ -128,6 +128,8 @@
       mysqli_stmt_close($stmt);
     }
     ?>
+    <script src="signup-validation.js"></script>
+
   </body>
   
   </html>

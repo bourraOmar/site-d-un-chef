@@ -66,68 +66,51 @@
 
   <!-- header -->
   <div class="relative mt-4 mx-8 grid md:grid-cols-3 gap-6">
-
     <div class="bg-white rounded-xl shadow-soft p-6 space-y-4">
       <h2 class="text-xl font-semibold text-gray-700 mb-4">Reservations Statistics</h2>
       <div class="space-y-3">
+
+        <?php
+        include 'connect.php';
+
+        function getReservationCount($conn, $status = null)
+        {
+          $condition = $status ? "WHERE statut = '$status'" : "";
+          $sql = "SELECT COUNT(*) AS res_count FROM reservation $condition";
+          $result = mysqli_query($conn, $sql);
+          if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['res_count'];
+          }
+          return 0; // Retourner 0 si la requête échoue
+        }
+        ?>
+
         <div class="flex justify-between items-center bg-blue-50 p-3 rounded-lg">
           <span class="text-gray-600">Total Reservations</span>
           <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full font-bold">
-            <?php
-            include 'connect.php';
-            $total_sql = "SELECT COUNT(*) AS res_count FROM reservation";
-            $total_result = mysqli_query($conn, $total_sql);
-            if ($total_result) {
-              while ($row = mysqli_fetch_assoc($total_result)) {
-                echo $row['res_count'];
-              }
-            }
-            ?>
+            <?php echo getReservationCount($conn); ?>
           </span>
         </div>
+
         <div class="flex justify-between items-center bg-green-50 p-3 rounded-lg">
           <span class="text-gray-600">Reservations Accepted</span>
           <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full font-bold">
-            <?php
-            include 'connect.php';
-            $total_acc = "SELECT COUNT(*) AS res_count FROM reservation WHERE reservation.statut = 'acceptee'";
-            $total_result_acc = mysqli_query($conn, $total_acc);
-            if ($total_result) {
-              while ($row = mysqli_fetch_assoc($total_result_acc)) {
-                echo $row['res_count'];
-              }
-            }
-            ?>
+            <?php echo getReservationCount($conn, 'acceptee'); ?>
           </span>
         </div>
+
         <div class="flex justify-between items-center bg-red-50 p-3 rounded-lg">
           <span class="text-gray-600">Reservations Refused</span>
           <span class="bg-red-200 text-red-800 px-3 py-1 rounded-full font-bold">
-            <?php
-            include 'connect.php';
-            $total_ref = "SELECT COUNT(*) AS res_count FROM reservation WHERE reservation.statut = 'refusee'";
-            $total_result_ref = mysqli_query($conn, $total_ref);
-            if ($total_result) {
-              while ($row = mysqli_fetch_assoc($total_result_ref)) {
-                echo $row['res_count'];
-              }
-            }
-            ?>
+            <?php echo getReservationCount($conn, 'refusee'); ?>
           </span>
         </div>
+
         <div class="flex justify-between items-center bg-yellow-50 p-3 rounded-lg">
           <span class="text-gray-600">Pending Reservations</span>
           <span class="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full font-bold">
-            <?php
-            include 'connect.php';
-            $total_pen = "SELECT COUNT(*) AS res_count FROM reservation WHERE reservation.statut = 'en_attente'";
-            $total_result_pen = mysqli_query($conn, $total_pen);
-            if ($total_result) {
-              while ($row = mysqli_fetch_assoc($total_result_pen)) {
-                echo $row['res_count'];
-              }
-            }
-            ?>
+            <?php echo getReservationCount($conn, 'en_attente'); ?>
           </span>
         </div>
       </div>
@@ -162,18 +145,18 @@
               <?php
               include 'connect.php';
 
-              $sql = "SELECT COUNT(*) AS total_clients FROM client";
-
-              $result = mysqli_query($conn, $sql);
-
-              if ($result) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                  echo $row['total_clients'] - 1;
+              function getTotalClients($conn)
+              {
+                $sql = "SELECT COUNT(*) AS total_clients FROM client";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                  $row = mysqli_fetch_assoc($result);
+                  return $row['total_clients'] - 1;
                 }
+                return 0;
               }
 
-
-
+              echo getTotalClients($conn);
               ?>
             </p>
             <p class="text-sm text-gray-600">Total registered</p>
@@ -183,7 +166,6 @@
     </div>
   </div>
 
-  </div>
 
   <!-- Gestion des Réservations -->
 
@@ -258,7 +240,7 @@
           </svg>
         </button>
       </div>
-      <form id="menuForm" enctype="multipart/form-data" method="POST" class="space-y-4">
+      <form id="menuForm" enctype="multipart/form-data" method="POST" class="space-y-4" onsubmit="return validatePlates()">
         <div>
           <label class="block text-gray-700 text-sm font-medium mb-2">Menu Name</label>
           <input type="text" name="menu_name" required
@@ -283,20 +265,19 @@
           <label class="block text-gray-700 text-sm font-medium mb-2">Select Plates (Max 3)</label>
           <div class="space-y-2">
             <?php
-
             include 'connect.php';
             $sql = "SELECT * FROM plate";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
               while ($row = mysqli_fetch_assoc($result)) {
-                echo '<label class="inline-flex items-center">';
-                echo '<input type="checkbox" name="plates[]" value="' . $row['id_plate'] . '" class="form-checkbox">';
-                echo '<span class="ml-2">' . $row['title'] . '</span>';
-                echo '</label>';
+                echo '<label class="inline-flex items-center">;
+                <input type="checkbox" name="plates[]" value="' . $row['id_plate'] . '" class="form-checkbox">;
+                <span class="ml-2">' . htmlspecialchars($row['title']) . '</span>;
+                </label>';
               }
             } else {
-              echo "<p>No plats available.</p>";
+              echo "<p class='text-red-600'>No plats available.</p>";
             }
             ?>
           </div>
@@ -318,6 +299,17 @@
       </form>
     </div>
   </div>
+
+  <script>
+    function validatePlates() {
+      const checkboxes = document.querySelectorAll('input[name="plates[]"]:checked');
+      if (checkboxes.length > 3) {
+        alert('You can select a maximum of 3 plates.');
+        return false;
+      }
+      return true; 
+    }
+  </script>
 
   <!-- Add Plate Modal -->
   <div id="addPlateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -363,6 +355,12 @@
       </form>
     </div>
   </div>
+
+  <script>
+    function closeAddPlateModal() {
+      document.getElementById('addPlateModal').classList.add('hidden');
+    }
+  </script>
 
 
   <script>
