@@ -124,22 +124,25 @@
         </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="mx-auto px-4">
-      <div class="grid md:grid-cols-2">
-        <div class="flex justify-center">
-          <a href="index.html">
-            <img src="img/white-logo.png" alt="Klassy Cafe Logo" class="h-12">
-          </a>
-        </div>
-        <div class="text-center md:text-right">
-          <p>© Copyright Klassy Cafe Co.</p>
-          <p>Design: TemplateMo</p>
+
+    <!-- Footer -->
+    <footer class="relative bottom-0 left-0 w-full bg-gray-900 text-white py-8">
+      <div class="mx-auto px-4">
+        <div class="grid md:grid-cols-2">
+          <div class="flex justify-center">
+            <a href="index.html">
+              <img src="img/white-logo.png" alt="Klassy Cafe Logo" class="h-12">
+            </a>
+          </div>
+          <div class="text-center md:text-right">
+            <p>© Copyright Klassy Cafe Co.</p>
+            <p>Design: TemplateMo</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+
+
 </body>
 
 </html>
