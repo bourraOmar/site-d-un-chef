@@ -48,6 +48,19 @@
         </div>
       </div>
     </header>
+      
+    <!-- Main Banner -->
+    <div class="pt-24 bg-[url('img/reservation-bg.jpg')] bg-no-repeat bg-cover px-[15%]  h-[100%]">
+      <div class="mx-auto p-4 py-20">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-center md:text-left">
+            <h4 class="text-2xl  font-bold text-amber-600">KlassyCafe</h4>
+            <h6 class="text-xl mb-4 text-white">THE BEST EXPERIENCE</h6>
+            <h4 class="text-9xl font-bold text-amber-600">Dashboard</h4>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>
